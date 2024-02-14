@@ -12,6 +12,6 @@ export class PostService {
   constructor(private http:HttpClient) { }
 
   getTimeLinePosts(): Observable <Post[]>{
-    return this.http.get<Post[]>(`${environment}`)
+    return this.http.get<Post[]>(`${environment.apiUrl}/posts`)
   }
 }
