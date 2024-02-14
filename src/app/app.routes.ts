@@ -7,5 +7,9 @@ export const routes: Routes = [
     loadComponent: () =>
     import("./features/timeline/timeline.component").then((c) =>
      c.TimelineComponent)
+  },
+  {
+    path: 'events',
+    loadComponent: ()=>import("./features/events/events.component").then((c)=>c.EventsComponent)
   }
 ];
