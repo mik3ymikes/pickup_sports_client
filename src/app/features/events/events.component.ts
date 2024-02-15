@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../core/services/event.service';
 import { Event } from '../../shared/models/event';
+import { EventComponent } from '../../shared/components/events/event/event.component';
 
 @Component({
   selector: 'app-events',
   standalone: true,
-  imports: [],
+  imports: [EventComponent],
   templateUrl: './events.component.html',
   styleUrl: './events.component.css'
 })

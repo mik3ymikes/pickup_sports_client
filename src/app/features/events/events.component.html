@@ -1,7 +1,8 @@
-@for (event of events; track event.id){
-  {{event.title}}
-}
-
+<div class="event-list-container">
+  @for (event of events; track event.id){
+    <app-event [event]="event"/>
+  }
+</div>
 
 <div class="pagination-controls">
   <button (click)="previousPage()" [disabled]="currentPage===1">Previous</button>
