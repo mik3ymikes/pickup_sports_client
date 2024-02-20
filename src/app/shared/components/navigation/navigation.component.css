@@ -34,3 +34,62 @@
   background-color: #FFA500;
   border-radius: 4px;
 }
+
+
+.nav-links{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+}
+
+.menu-container{
+  transition: width 0.3s ease;
+  width: 2rem;
+
+}
+
+.menu-container.active{
+  width: 275px;
+}
+
+
+.menu{
+  cursor: pointer;
+  background:none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+}
+
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    background: #fff;
+    border-left: 2px solid lightblue;
+    transition: right 0.3s ease;
+  }
+
+
+
+.sidebar.active{
+  right: 0px;
+}
+
+
+.sidebar a{
+  display: block;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  color: #333;
+  text-decoration: none;
+}
+
+
+.sidebar a:hover{
+  background-color: #ffffff98;
+}
