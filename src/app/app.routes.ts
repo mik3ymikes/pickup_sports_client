@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './core/guards/auth.guard';
+import { noAuthGuard } from './core/guards/no-auth.guard';
 
 export const routes: Routes = [
   {
@@ -6,16 +8,21 @@ export const routes: Routes = [
     pathMatch:"full",
     loadComponent: () =>
     import("./features/timeline/timeline.component").then((c) =>
-     c.TimelineComponent)
+     c.TimelineComponent),
+     canActivate: [authGuard]
   },
   {
     path: 'events',
-    loadComponent: ()=>import("./features/events/events.component").then((c)=>c.EventsComponent)
+    loadComponent: ()=>import("./features/events/events.component")
+    .then((c)=>c.EventsComponent),
+    canActivate: [noAuthGuard]
   },
 
   {
     path: 'login',
     loadComponent:() =>import
-    ("./features/auth/login/login.component").then((c)=>c.LoginComponent)
+    ("./features/auth/login/login.component")
+    .then((c)=>c.LoginComponent),
+    canActivate: [noAuthGuard]
   }
 ];
