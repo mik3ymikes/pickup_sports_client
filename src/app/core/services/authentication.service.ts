@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 import { switchMap } from 'rxjs';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor(private http:HttpClient, private router:Router) { }
+  constructor(private http:HttpClient, private router:Router, private userService:UserService) { }
 
   login(username:string, password:string){
     return this.http.post<{token:string}>(`${environment.apiUrl}/login`, {
@@ -17,6 +18,7 @@ export class AuthenticationService {
       password
     }).pipe(switchMap((res:any)=>{
       this.setToken(res.token)
+      return this.userService.getBootstrapData()
     }))
   }
   setToken(token:string){
