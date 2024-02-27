@@ -21,6 +21,14 @@ export class AuthenticationService {
       return this.userService.getBootstrapData()
     }))
   }
+
+ signup(data:any){
+  return this.http.post(`${environment.apiUrl}/users`, data)
+ }
+
+
+
+
   setToken(token:string){
     localStorage.setItem('token', token)
   }
