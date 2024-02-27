@@ -2,10 +2,11 @@ import { APP_INITIALIZER, ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { UserService } from './core/services/user.service';
 import { AuthenticationService } from './core/services/authentication.service';
 import { of } from 'rxjs';
+import { authInterceptor } from './core/interceptors/auth.interceptor';
 
 export function initializeUserData(userService:UserService, authService:AuthenticationService){
   console.log("THIS EXEC")
@@ -25,5 +26,6 @@ export const appConfig: ApplicationConfig = {
     deps: [UserService, AuthenticationService],
     multi:true
   },
-     provideHttpClient()]
+     provideHttpClient(withInterceptors([authInterceptor])),
+],
 };
