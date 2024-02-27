@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
+import { switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,9 @@ export class AuthenticationService {
     return this.http.post<{token:string}>(`${environment.apiUrl}/login`, {
       username,
       password
-    })
+    }).pipe(switchMap((res:any)=>{
+      this.setToken(res.token)
+    }))
   }
   setToken(token:string){
     localStorage.setItem('token', token)

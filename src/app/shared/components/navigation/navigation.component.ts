@@ -30,8 +30,11 @@ export class NavigationComponent implements OnInit {
   }
 
   logout(){
+    if(this.isSidebarVisible){
+      this.toggleSidebar()
+    }
     this.authService.logout()
-    this.toggleSidebar()
+    this.userService.setCurrentUser(null)
   }
 
   toggleSidebar(){
