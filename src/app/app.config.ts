@@ -8,10 +8,13 @@ import { AuthenticationService } from './core/services/authentication.service';
 import { of } from 'rxjs';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
 
-export function initializeUserData(userService:UserService, authService:AuthenticationService){
+
+
+export function initializeUserData(
+  userService:UserService, authService:AuthenticationService){
   console.log("THIS EXEC")
   if(authService.isLoggedIn()){
-    return () =>userService.getBootstrapData().subscribe
+    return () =>userService.getBootstrapData().subscribe()
 
     } else{
       return () => of(null)
@@ -20,7 +23,9 @@ export function initializeUserData(userService:UserService, authService:Authenti
 
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), {
+  providers: [
+    provideRouter(routes),
+    {
     provide:APP_INITIALIZER,
     useFactory:initializeUserData,
     deps: [UserService, AuthenticationService],
