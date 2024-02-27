@@ -30,7 +30,9 @@
     <label for="password_confirmation"> confirm password</label>
     <input type="password" formControlName="password_confirmation">
   </div>
-
+   @for(error of errors; track $index){
+    <p class="error">{{error}}</p>
+   }
   <button type="submit" >Sign Up</button>
   </form>
 </div>

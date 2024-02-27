@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.css'
+  styleUrl: '../auth.shared.css'
 })
 export class SignupComponent {
  signupForm: FormGroup =new FormGroup({
@@ -21,6 +21,8 @@ export class SignupComponent {
 
  })
 
+ errors:string[]=[]
+
  constructor(private authService:AuthenticationService, private router:Router){}
 
  onSignup(){
@@ -30,7 +32,8 @@ export class SignupComponent {
       this.router.navigate(['/login'])
     },
     error: (error:any) =>{
-      console.log(error)
+      console.log(error.error)
+      this.errors=error.error
     }
    })
  }
