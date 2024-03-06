@@ -12,6 +12,7 @@ import { DatePipe } from '@angular/common';
   templateUrl: './event-details.component.html',
   styleUrl: './event-details.component.css'
 })
+
 export class EventDetailsComponent implements OnInit {
    event:Event=new Event({})
 

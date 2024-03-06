@@ -18,6 +18,12 @@ export const routes: Routes = [
     canActivate: [noAuthGuard]
   },
   {
+    path: 'create-event',
+    loadComponent: ()=>import("./features/create-event/create-event.component")
+    .then((c)=>c.CreateEventComponent),
+    canActivate: [noAuthGuard]
+  },
+  {
     path: 'events/:id',
     loadComponent: ()=>import("./features/event-details/event-details.component")
     .then((c)=>c.EventDetailsComponent),
