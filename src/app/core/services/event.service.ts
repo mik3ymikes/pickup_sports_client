@@ -16,4 +16,8 @@ export class EventService {
   getEvent(id:string | number) {
     return this.http.get<Event>(`${environment.apiUrl}/events/}$(id)`)
   }
+
+  createEvent(event:Event){
+    return this.http.post(`${environment.apiUrl}/events`, event)
+  }
 }
