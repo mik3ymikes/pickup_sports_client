@@ -5,6 +5,7 @@ import { SportService } from '../../core/services/sport.service';
 import { EventService } from '../../core/services/event.service';
 import { Event } from '../../shared/models/event';
 import { Router } from '@angular/router';
+import { formatDate } from '@angular/common';
 
 
 @Component({
@@ -26,6 +27,7 @@ eventForm: FormGroup= new FormGroup({
 })
 
 sports: Sport[]=[]
+selectedFile: File | null =null
 
 constructor(private sportService:SportService, private eventService:EventService, private router:Router){}
 ngOnInit(): void {
@@ -56,13 +58,25 @@ get sportIds(): FormArray{
 }
 
 
-onCreateEvent(){
+extractSportIds(){
   const sportIdsFormValue=this.eventForm.value.sportIds
   const sportIds =sportIdsFormValue.map((checked:boolean, i:number)=>{
     return checked ? this.sports[i].id : null
   }).filter((id:any)=>{
     return id !==null
   })
+  return sportIds
+}
+
+
+onCreateEvent(){
+  const sportIds=this.extractSportIds()
+  const formData:any = new FormData();
+  formData.append('title', this.eventForm.get('title')!.value)
+  formData.append('content', this.eventForm.get('content')!.value)
+  formData.append('guests', this.eventForm.get('guests')!.value)
+  formData.append('start_date_time', this.eventForm.get('start_date_time')!.value)
+  formData.append('end_date_time', this.eventForm.get('end_date_time')!.value)
 
 
   const event: Event = {
@@ -78,5 +92,10 @@ onCreateEvent(){
     }
   })
 
+}
+onfileSelected(event:any){
+  if(event.target.files && event.target.files[0]){
+   this.selectedFile=event.target.files[0]
+  }
 }
 }

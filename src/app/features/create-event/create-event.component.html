@@ -31,8 +31,12 @@
         }
 
       </div>
-
     }
+
+    <div>
+      <label for="cover_image">Cover Image</label>
+      <input type="file" (change)="onFileSlected($event)" id="cover-image">
+    </div>
     <button type="submit">Create Event</button>
 </form>
 </div>
