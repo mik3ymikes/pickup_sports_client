@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../../core/services/event.service';
 import { Event } from '../../shared/models/event';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
   selector: 'app-event-details',
   standalone: true,
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './event-details.component.html',
   styleUrl: './event-details.component.css'
 })
