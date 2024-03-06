@@ -12,4 +12,8 @@ export class EventService {
       return this.http.get<Event[]>(`${environment.apiUrl}/events?page=${page}`)
 
   }
+
+  getEvent(id:string | number) {
+    return this.http.get<Event>(`${environment.apiUrl}/events/}$(id)`)
+  }
 }
