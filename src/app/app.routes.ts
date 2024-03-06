@@ -19,7 +19,7 @@ export const routes: Routes = [
   },
   {
     path: 'events/:id',
-    loadComponent: ()=>import("./features/events/events.component")
+    loadComponent: ()=>import("./features/event-details/event-details.component")
     .then((c)=>c.EventsComponent),
     canActivate: [noAuthGuard]
   },
