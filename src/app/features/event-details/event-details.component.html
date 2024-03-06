@@ -8,13 +8,13 @@
      <div class="event-creator">
       created by: <strong>{{event.user.username}}</strong>
      </div>
-     <div class="sports-container">
-      <h3>Sports:</h3>
-      <ul>
-        @for(sport of event.sports; track sport.id){
-          <li>{{sport.name}}</li>
-        }
-      </ul>
-     </div>
   </div>
+  <div class="sports-container">
+    <h3>Sports:</h3>
+    <ul>
+      @for(sport of event.sports; track sport.id){
+        <li>{{sport.name}}</li>
+      }
+    </ul>
+   </div>
 </div>

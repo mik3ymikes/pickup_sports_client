@@ -1,0 +1,47 @@
+.event-detail-container{
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 20px;
+  background-color: whitesmoke;
+  border-radius: 8px;
+  background-origin: 0 2px 4px blue;
+}
+
+.event-title{
+  color: gray;
+  background-color: aqua;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.event-content{
+  max-width: 20px 0;
+  line-height: 1.6
+}
+
+
+.event-info{
+  display: flex;
+  justify-content: space-between;
+  background-color: orange;
+}
+
+
+
+.event-info .event-dates, .event-info, .event-creator{
+  margin: 0px;
+}
+
+.event-timestamps{
+  font-size: 1rem;
+  color: gray;
+  margin-top: 10px;
+
+
+}
+
+
+.event-timestamps span{
+  display: block;
+  margin: 5px 0;
+}
