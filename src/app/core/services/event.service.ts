@@ -7,17 +7,17 @@ import { environment } from '../../../environments/environment';
 })
 export class EventService {
 
-  constructor(private http:HttpClient) { }
-    getEvents(page:number){
-      return this.http.get<Event[]>(`${environment.apiUrl}/events?page=${page}`)
+  constructor(private http: HttpClient) { }
 
+  getEvents(page: number) {
+    return this.http.get<Event[]>(`${environment.apiUrl}/events?page=${page}`);
   }
 
-  getEvent(id:string | number) {
-    return this.http.get<Event>(`${environment.apiUrl}/events/}$(id)`)
+  getEvent(id: string | number) {
+    return this.http.get<Event>(`${environment.apiUrl}/events/${id}`);
   }
 
-  createEvent(event:Event){
-    return this.http.post(`${environment.apiUrl}/events`, event)
+  createEvent(event: Event) {
+    return this.http.post(`${environment.apiUrl}/events`, event);
   }
 }

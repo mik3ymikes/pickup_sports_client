@@ -1,4 +1,7 @@
 <div class="event-detail-container">
+  <div class="event-image">
+    <img [src]="event.cover_image_url || ' '" src="" alt="">
+  </div>
   <h2 class="event-title"> {{event.title}}</h2>
   <p class="event-content">{{event.content}}</p>
   <div class="event-info">

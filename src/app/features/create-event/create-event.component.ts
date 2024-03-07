@@ -77,13 +77,18 @@ onCreateEvent(){
   formData.append('guests', this.eventForm.get('guests')!.value)
   formData.append('start_date_time', this.eventForm.get('start_date_time')!.value)
   formData.append('end_date_time', this.eventForm.get('end_date_time')!.value)
+  sportIds.forEach((sportId:any)=>{
+ formData.append('sport_ids[]', sportId)
+})
 
+formData.append('cover_image', this.selectedFile, this.selectedFile!.name)
 
-  const event: Event = {
-    sport_ids:sportIds,
-    ...this.eventForm.value
-  }
-  this.eventService.createEvent(event).subscribe({
+  // const event: Event = {
+  //   sport_ids:sportIds,
+  //   ...this.eventForm.value
+  // }
+
+  this.eventService.createEvent(formData).subscribe({
     next: () =>{
        this.router.navigate(['/events'])
     },

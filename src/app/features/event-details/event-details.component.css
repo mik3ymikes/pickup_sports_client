@@ -45,3 +45,8 @@
   display: block;
   margin: 5px 0;
 }
+
+
+.event-image img{
+  width: 100%;
+}
