@@ -21,4 +21,8 @@ export class NotificationService {
       console.log(data)
     })
   }
+
+  unsubscribeChannel(userId:number){
+    this.pusher.unsubscribe(userId.toString())
+  }
 }
