@@ -14,6 +14,9 @@ export class PopupService {
     document.createElement("popup-elmeent") as any
 
     // timeout
+    setTimeout(()=>{
+      document.body.removeChild(popupElement)
+    }, 3000)
 
     popupElement.message=message
     document.body.appendChild(popupElement)
