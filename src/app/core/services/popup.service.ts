@@ -1,0 +1,21 @@
+import { Injectable } from '@angular/core';
+import { PopupComponent } from '../../shared/components/popup/popup.component';
+import { NgElement, WithProperties } from '@angular/elements';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class PopupService {
+
+  constructor() { }
+
+  showAsElement(message:string){
+    const popupElement: NgElement & WithProperties<PopupComponent>=
+    document.createElement("popup-elmeent") as any
+
+    // timeout
+
+    popupElement.message=message
+    document.body.appendChild(popupElement)
+  }
+}

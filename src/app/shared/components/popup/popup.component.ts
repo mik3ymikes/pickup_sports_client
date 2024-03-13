@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-popup',
@@ -36,5 +36,22 @@ import { Component } from '@angular/core';
 export class PopupComponent {
 
 
-  message: string =''
+ @HostBinding('@state')
+ state:"opened" | "void" ="void";
+
+ @Input()
+ set message(msg:string){
+  this.message =msg
+  this.state="opened"
+ }
+
+
+ get message(): string{
+  return this._message
+ }
+
+ private _message = ""
+
+ @Output()
+ closed=new EventEmitter<void>()
 }
