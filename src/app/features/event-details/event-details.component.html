@@ -29,3 +29,16 @@
 
    }
 </div>
+
+
+<div class="guests-container">
+  @for(guest of guests; track trackById){
+    <div class="guest-item">
+      @if(guest.empty){
+        <div>Open Slot</div>
+      } @else{
+        <div>{{guest.username}}</div>
+      }
+    </div>
+  }
+</div>

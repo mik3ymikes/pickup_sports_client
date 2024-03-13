@@ -63,6 +63,7 @@ export class EventDetailsComponent implements OnInit {
             this.event.participants = this.event.participants. filter((p) =>
             p.id !== this.currentUser?.id)
           }
+          this.prepareGuests()
         }
       },
       error: (error) =>{
